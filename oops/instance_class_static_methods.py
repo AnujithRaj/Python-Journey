@@ -76,19 +76,78 @@ print(MathUtils.is_even(15))
 
 
 # 6. Create a Calculator class with static methods for addition and subtraction.
+class Calculator:
 
+    @staticmethod
+    def addition(num1, num2):
+        return num1 + num2
+
+    @staticmethod
+    def subtraction(num1, num2):
+        return num1 - num2
+
+print(Calculator.addition(20, 30))
+print(Calculator.subtraction(20, 11))
 
 # 7. Create a Person class with an instance method that introduces the person.
+class Person:
+    def __init__(self, name, age, city):
+        self.name = name
+        self.age = age
+        self.city = city
+
+    def introduces(self):
+        return f" My name is {self.name}, I am {self.age} years old, and I live in {self.city}"
+
+p1 = Person("Siddharth", 24, "Rajgir")
+
+print(p1.introduces())
 
 
 # 8. Create a Product class with a class variable tax_rate and a method to calculate tax.
+class Product:
+    tax_rate = 12
 
+    def __init__(self, product_name, price):
+        self.product_name = product_name
+        self.price = price
+
+    def tax(self):
+        return self.price * Product.tax_rate / 100
+
+
+p1 = Product("Watch", 1000)
+
+print(p1.tax())
 
 # 9. Create a Student class with a class method that creates a student from a string.
+class Student:
+    def __init__(self, name, age, city):
+        self.name = name
+        self.age = age
+        self.city = city
 
+    @classmethod
+    def from_string(cls, data):
+        name, age, city = data.split(",")
+        return cls(name, int(age), city)
+
+
+s1 = Student.from_string("Siddharth,22,Rajgir")
+
+print(s1.name)
+print(s1.age)
+print(s1.city)
 
 # 10. Create a Temperature class with a static method to convert Celsius to Fahrenheit.
+class Temperature:
 
+    @staticmethod
+    def show(celsius):
+        fahrenheit = (celsius * 9/5) + 32
+        return fahrenheit
+
+print(Temperature.show(40))
 
 # 11. Create a Rectangle class with an instance method to calculate area.
 
@@ -118,3 +177,5 @@ print(MathUtils.is_even(15))
 
 
 # 20. Create one class demonstrating one instance method, one class method, and one static method.
+
+
