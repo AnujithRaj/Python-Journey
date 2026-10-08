@@ -1,3 +1,5 @@
+import math
+
 # Topic: Instance, Class, and Static Methods
 
 # 1. Create a Student class with an instance method that displays student details.
@@ -150,32 +152,152 @@ class Temperature:
 print(Temperature.show(40))
 
 # 11. Create a Rectangle class with an instance method to calculate area.
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
 
+    def area(self):
+        return self.length * self.width
+
+rec1 = Rectangle(20, 11)
+
+print(rec1.area())
 
 # 12. Create a Bank class with a class method to display the total number of accounts.
+class Bank:
+    total_account = 0
+    def __init__(self, account_type):
+        self.account_type = account_type
+        Bank.total_account += 1
 
+    @classmethod
+    def display(cls):
+        return cls.total_account
+
+b1 = Bank("Saving")
+b2 = Bank("current")
+b3 = Bank("Saving")
+
+print(b1.display())
 
 # 13. Create a Utility class with a static method to validate an email string contains @.
+class Utility:
+
+    @staticmethod
+    def contains(email):
+        return "@" in email
+
+print(Utility.contains("abc@gmail.com"))
+print(Utility.contains("xyzgmail.com"))
 
 
 # 14. Create a Book class with a class variable total_books and increment it for each object.
+class Book:
 
+    total_books = 0
+
+    def __init__(self, title):
+        self.title = title
+        Book.total_books += 1
+
+book1 = Book("Python Basic")
+book2 = Book("C++ Basic")
+book3 = Book("Java Basic")
+
+print(Book.total_books)
 
 # 15. Create a Circle class with a static method to calculate area from a radius.
+class Circle:
 
+    @staticmethod
+    def show(radius):
+        area = math.pi * radius * radius
+        return area
+
+print(Circle.show(14))
 
 # 16. Create an Employee class with an instance method to calculate annual salary.
+class Employee:
+    def __init__(self, salary):
+        self.salary = salary
 
+    def display(self):
+        return self.salary * 12
+
+emp1 = Employee(60000)
+
+print(emp1.display())
 
 # 17. Create a Course class with a class method to create an object from a course string.
+class Course:
+    def __init__(self, course):
+        self.course = course
 
+    @classmethod
+    def show(cls, course_string):
+        return cls(course_string)
+
+c1 = Course.show("Data Science")
+
+print(c1.course)
 
 # 18. Create a Number class with a static method to check whether a number is prime.
+class Number:
 
+    @staticmethod
+    def is_prime(num):
+        if num < 2:
+            return False
+        for i in range(2, num):
+            if num % i == 0:
+                return False
+
+        return True
+
+print(Number.is_prime(10))
+print(Number.is_prime(7))
 
 # 19. Create a ShoppingCart class with an instance method to calculate total price.
+class ShoppingCart:
+    def __init__(self, price, quantity):
+        self.price = price
+        self.quantity = quantity
+        self.total_price = self.price * self.quantity
 
+    def show(self):
+        return self.total_price
+
+s1 = ShoppingCart(20, 4)
+s2 = ShoppingCart(240, 5)
+
+print(s1.show())
+print(s2.show())
 
 # 20. Create one class demonstrating one instance method, one class method, and one static method.
+class Student:
 
+    def __init__(self, name):
+        self.name = name
+
+    # Instance method
+    def show_name(self):
+        return self.name
+
+    # Class method
+    @classmethod
+    def show_school(cls):
+        return "ABC School"
+
+    # Static method
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+
+s1 = Student("Rahul")
+
+print(s1.show_name())          # Instance method
+print(Student.show_school())   # Class method
+print(Student.add(10, 20))     # Static method
 
