@@ -93,18 +93,92 @@ rec1 = Rectangle(20, 11)
 print(rec1.show_area())
 
 # 6. Create a BankAccount class and inherit SavingsAccount from it.
+class BankAccount:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
+class SavingAccount(BankAccount):
+    def __init__(self, name, age, balance):
+        super().__init__(name, age)
+        self.balance = balance
+
+    def show(self):
+        return self.name, self.age, self.balance
+
+ac1 = SavingAccount("Anujith", 22, 240000)
+
+print(ac1.show())
 
 # 7. Create a Device class and inherit Mobile from it.
+class Device:
+    def __init__(self, brand, color):
+        self. brand = brand
+        self.color = color
 
+class Mobile(Device):
+    def __init__(self, brand, color, price):
+        super().__init__(brand, color)
+        self.price = price
+
+    def display(self):
+        return self.brand, self.color, self.price
+
+mob1 = Mobile("Apple", "White", 80000)
+mob2 = Mobile("Samsung", "Gray", 60000)
+
+print(mob1.display())
+print(mob2.display())
 
 # 8. Create a Person class with a name attribute and access it from a Student object.
+class Person:
+    def __init__(self, name, city):
+        self.name = name
+        self.city = city
 
+class Student(Person):
+    def __init__(self, name, city, age):
+        super().__init__(name, city)
+        self.age = age
+
+    def display(self):
+        return self.name
+
+s1 = Student("Siddharth", "Rajgir", 22)
+
+print(s1.display())
 
 # 9. Create a Vehicle class with a start method and use it in a Car child class.
+class Vehicle:
+    def start(self):
+        print("Vehicle is Starting")
 
+class Car(Vehicle):
+    def stop(self):
+        print("Car is Stopped")
+
+
+c1 = Car()
+
+c1.start()
+c1.stop()
 
 # 10. Create a parent class with a constructor and call it from the child constructor using super().
+class Parent:
+    def __init__(self,name):
+        self.name = name
+
+class Child(Parent):
+    def __init__(self, name, age):
+        super().__init__(name)
+        self.age = age
+
+    def display(self):
+        return self.name, self.age
+
+c1 = Child("Siddharth", 22)
+
+print(c1.display())
 
 
 # 11. Create an Animal class with a sound method and extend it in Dog.
