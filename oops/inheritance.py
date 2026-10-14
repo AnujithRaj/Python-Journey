@@ -182,19 +182,115 @@ print(c1.display())
 
 
 # 11. Create an Animal class with a sound method and extend it in Dog.
+class Animal:
+    def sound(self):
+        print("Animal makes a sound")
 
+class Dog(Animal):
+    def sound(self):
+        print("Dog is barking")
+
+d1 = Dog()
+
+d1.sound()
 
 # 12. Create a three-level inheritance example: Animal -> Mammal -> Dog.
+class Animal:
+    def __init__(self, name):
+        self.name = name
 
+class Mammal(Animal):
+    def __init__(self, name):
+        super().__init__(name)
+
+class Dog(Mammal):
+    def __init__(self, name):
+        super().__init__(name)
+
+    def show(self):
+        return self.name
+
+d1 = Dog("Pommy")
+
+print(d1.show())
 
 # 13. Create a multilevel inheritance example using Grandparent -> Parent -> Child.
+class Grandparent:
+    def __init__(self, name, age ,city):
+        self.name = name
+        self.age = age
+        self.city = city
 
+class Parent(Grandparent):
+    def __init__(self, name, age, city):
+        super().__init__(name, age, city)
+
+class Child(Parent):
+    def __init__(self, name, age, city):
+        super().__init__(name, age, city)
+
+    def display(self):
+        return self.name, self.age, self.city
+
+child1 = Child("ABC", 20, "PQR")
+
+print(child1.display())
 
 # 14. Create a hierarchical inheritance example with Animal as parent and Dog and Cat as children.
+class Animal:
+    def __init__(self, name):
+        self.name = name
 
+class Dog(Animal):
+    def __init__(self, name, breed):
+        super().__init__(name)
+        self.breed = breed
+
+    def display(self):
+        return self.name, self.breed
+
+class Cat(Animal):
+    def __init__(self, name, color):
+        super().__init__(name)
+        self.color = color
+
+    def display(self):
+        return self.name, self.color
+
+dog1 = Dog("Pommy", "Golden")
+cat1 = Cat("abc", "White")
+
+print(dog1.display())
+print(cat1.display())
 
 # 15. Create a parent class Person and two child classes Student and Teacher.
+class Person:
+    def __init__(self, name, age, city):
+        self.name = name
+        self.age = age
+        self.city = city
 
+class Student(Person):
+    def __init__(self, name, age, city, roll_no):
+        super().__init__(name, age, city)
+        self.roll_no = roll_no
+
+    def display(self):
+        return self.name, self.age, self.city, self.roll_no
+
+class Teacher(Person):
+    def __init__(self, name, age, city, subject):
+        super().__init__(name, age, city)
+        self.subject = subject
+
+    def display(self):
+        return self.name, self.age, self.city, self.subject
+
+student1 = Student("Siddharth", 22, "Rajgir", 11)
+teacher1 = Teacher("XYZ", 32, "Bhui", "Science")
+
+print(student1.display())
+print(teacher1.display())
 
 # 16. Create an Employee class with salary and a Manager class that adds a bonus.
 
