@@ -1,3 +1,4 @@
+import math
 # Topic: Inheritance
 
 # 1. Create a Person class and inherit a Student class from it.
@@ -293,16 +294,103 @@ print(student1.display())
 print(teacher1.display())
 
 # 16. Create an Employee class with salary and a Manager class that adds a bonus.
+class Employee:
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+class Manager(Employee):
+    def __init__(self, name, salary, bonus):
+        super().__init__(name, salary)
+        self.bonus = bonus
 
+    def show(self):
+        return self.name, self.salary, self.bonus
+
+manager1 = Manager("Priti", 80000, 5000)
+
+print(manager1.show())
 
 # 17. Create a Vehicle class with speed and a Bike class that adds gear.
+class Vehicle:
+    def __init__(self, speed):
+        self.speed = speed
 
+class Bike(Vehicle):
+    def __init__(self, speed, gear):
+        super().__init__(speed)
+        self.gear = gear
+
+    def display(self):
+        return self.speed, self.gear
+
+bike1 = Bike(80, 2)
+
+print(bike1.display())
 
 # 18. Create a Shape class and child classes Rectangle and Circle with their own area methods.
+class Shape:
+    def __init__(self, name):
+        self.name = name
 
+class Rectangle(Shape):
+    def __init__(self, name, length, width):
+        super().__init__(name)
+        self.length = length
+        self.width = width
+
+    def rectangle_area(self):
+        return self.length * self.width
+
+class Circle(Shape):
+    def __init__(self, name, radius):
+        super().__init__(name)
+        self.radius = radius
+
+    def circle_area(self):
+        return math.pi * self.radius * self.radius
+
+rectangle1 = Rectangle("Rectangle", 20, 10)
+circle1 = Circle("Circle", 24)
+
+print(rectangle1.rectangle_area())
+print(circle1.circle_area())
 
 # 19. Create a parent class Account and child classes SavingsAccount and CurrentAccount.
+class Account:
+    def __init__(self, account_holder, balance):
+        self.account_holder = account_holder
+        self.balance = balance
 
+class SavingAccount(Account):
+    def __init__(self,account_holder, balance):
+        super().__init__(account_holder, balance)
+
+    def show(self):
+        return self.account_holder, self.balance
+
+class CurrentAccount(Account):
+    def __init__(self, account_holder, blance):
+        super().__init__(account_holder, blance)
+
+    def show(self):
+        return self.account_holder, self.balance
+
+account1 = SavingAccount("Siddharth", 80000)
+account2 = CurrentAccount("Anujith", 90000)
+
+print(account1.show())
+print(account2.show())
 
 # 20. Create an inheritance example where the child adds a new method to the parent functionality.
+class Parent:
+    def show(self):
+        print("This is Parrent class")
+        
+class Child(Parent):
+    def display(self):
+        print("This is child class")
 
+c1 = Child()
+
+c1.show()
+c1.display()
